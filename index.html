@@ -37,15 +37,6 @@
             align-items: center;
             flex-wrap: wrap;
         }
-        .logo {
-            font-weight: 700;
-            font-size: 1.6rem;
-            letter-spacing: -0.5px;
-            color: #f5ede4;
-        }
-        .logo span {
-            color: #d9b382;
-        }
         .nav-links {
             display: flex;
             gap: 28px;
@@ -71,6 +62,7 @@
             font-size: 0.95rem;
             transition: 0.2s;
             display: inline-block;
+            cursor: pointer;
         }
         .nav-phone:hover {
             background: #e8c9a6;
@@ -147,6 +139,7 @@
         .hero-image {
             flex: 0 0 360px;
             text-align: center;
+            cursor: pointer;
         }
         .hero-image-placeholder {
             background: #5a3f2b;
@@ -156,6 +149,12 @@
             font-weight: 500;
             border: 2px dashed #d9b382;
             box-shadow: 0 0 0 6px rgba(217, 179, 130, 0.12);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .hero-image-placeholder:hover {
+            transform: scale(1.02);
+            border-color: #e8c9a6;
         }
         .hero-image-placeholder i {
             font-size: 4rem;
@@ -300,7 +299,7 @@
         }
         .reviews-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
         }
         .review-card {
@@ -350,6 +349,7 @@
         .contacts-info a {
             color: #4a3525;
             font-weight: 600;
+            cursor: pointer;
         }
         .discounts-box {
             background: #fdf8f2;
@@ -401,7 +401,6 @@
             margin-top: 4px;
             color: #3e2e24;
         }
-        /* Калькулятор */
         .calculator-wrap {
             background: #fdf8f2;
             border-radius: 32px;
@@ -483,15 +482,15 @@
             background: #e8c9a6;
             transform: scale(1.02);
         }
-        .footer {
-            background: #4a3525;
-            color: #d9c2ad;
-            padding: 30px 0;
-            text-align: center;
+        .experience-badge {
+            display: inline-block;
+            background: #d9b382;
+            color: #3e2e24;
+            padding: 4px 18px;
+            border-radius: 40px;
+            font-weight: 600;
             font-size: 0.95rem;
-        }
-        .footer span {
-            color: #d9b382;
+            margin-top: 8px;
         }
         @media (max-width: 800px) {
             .hero-title { font-size: 2.2rem; }
@@ -510,22 +509,15 @@
             .btn-primary { width: 100%; text-align: center; padding: 16px 20px; font-size: 1.1rem; }
         }
         a { text-decoration: none; }
-        .experience-badge {
-            display: inline-block;
-            background: #d9b382;
-            color: #3e2e24;
-            padding: 4px 18px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-top: 8px;
+        .clickable {
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="container">
-            <div class="logo">Гарант <span>Мастер</span></div>
+            <!-- ЛОГОТИП УДАЛЕН -->
             <ul class="nav-links">
                 <li><a href="#services">Услуги</a></li>
                 <li><a href="#prices">Цены</a></li>
@@ -533,7 +525,7 @@
                 <li><a href="#reviews">Отзывы</a></li>
                 <li><a href="#contacts">Контакты</a></li>
             </ul>
-            <a href="tel:+799954304159" class="nav-phone"><i class="fas fa-phone-alt"></i> 8-995-430-41-59</a>
+            <a href="tel:+799954304159" class="nav-phone" onclick="phoneClick(event)"><i class="fas fa-phone-alt"></i> 8-995-430-41-59</a>
         </div>
     </nav>
 
@@ -546,7 +538,7 @@
                 <div class="hero-badges">
                     <span><i class="fas fa-check-circle"></i> Бесплатный замер</span>
                     <span><i class="fas fa-clock"></i> Монтаж за 1 день</span>
-                    <span><i class="fas fa-award"></i> Гарантия 15 лет</span>
+                    <span><i class="fas fa-award"></i> Гарантия 10 лет</span>
                     <span><i class="fas fa-star"></i> Опыт более 15 лет</span>
                 </div>
                 <div style="margin-bottom: 24px;">
@@ -556,7 +548,7 @@
                     <i class="fas fa-calculator"></i> Рассчитать стоимость
                 </button>
             </div>
-            <div class="hero-image">
+            <div class="hero-image" onclick="scrollToPortfolio()">
                 <div class="hero-image-placeholder">
                     <i class="fas fa-arrow-up"></i><br>
                     <span style="font-size: 1.4rem; display:block; margin-top: 6px;">Современные потолки</span>
@@ -601,29 +593,49 @@
             <h2 class="section-title">Портфолио</h2>
             <p class="section-sub">Реализованные проекты в Красноярске и крае</p>
             <div class="portfolio-grid">
+                <!-- НОВОЕ ФОТО (заменило "Дизайнерский потолок, 30 м²") -->
                 <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d9c2ad'/%3E%3Ctext x='30' y='160' font-family='Segoe UI' font-size='20' fill='%234a3525'%3E✨ Глянцевый потолок%3C/text%3E%3Ctext x='30' y='190' font-family='Segoe UI' font-size='16' fill='%236b5543'%3E18 м², гостиная%3C/text%3E%3C/svg%3E" alt="Глянцевый потолок">
-                    <div class="overlay"><i class="fas fa-icicles"></i> Глянец, 18 м²</div>
+                    <img src="https://i.imgur.com/JYkpM66.jpeg" alt="Дизайнерский натяжной потолок">
+                    <div class="overlay"><i class="fas fa-star"></i> Дизайнерский потолок, 30 м²</div>
                 </div>
+
+                <!-- НОВОЕ ФОТО (заменило повторяющееся) -->
                 <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d9c2ad'/%3E%3Ctext x='30' y='160' font-family='Segoe UI' font-size='20' fill='%234a3525'%3E🌙 Матовый с подсветкой%3C/text%3E%3Ctext x='30' y='190' font-family='Segoe UI' font-size='16' fill='%236b5543'%3E22 м², спальня%3C/text%3E%3C/svg%3E" alt="Матовый с подсветкой">
-                    <div class="overlay"><i class="fas fa-moon"></i> Матовый с подсветкой</div>
+                    <img src="https://i.imgur.com/7hwFbvZ.jpeg" alt="Дизайнерский натяжной потолок">
+                    <div class="overlay"><i class="fas fa-star"></i> Дизайнерский потолок, 26 м²</div>
                 </div>
+
+                <!-- НОВЫЕ ФОТО С IMGUR -->
                 <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d9c2ad'/%3E%3Ctext x='30' y='160' font-family='Segoe UI' font-size='20' fill='%234a3525'%3E☁️ Фотопечать «Небо»%3C/text%3E%3Ctext x='30' y='190' font-family='Segoe UI' font-size='16' fill='%236b5543'%3E15 м², детская%3C/text%3E%3C/svg%3E" alt="Фотопечать Небо">
-                    <div class="overlay"><i class="fas fa-cloud"></i> Фотопечать «Небо»</div>
+                    <img src="https://i.imgur.com/Yle7FFb.jpeg" alt="Современный натяжной потолок">
+                    <div class="overlay"><i class="fas fa-star"></i> Глянцевый потолок, 24 м²</div>
                 </div>
+
                 <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d9c2ad'/%3E%3Ctext x='30' y='160' font-family='Segoe UI' font-size='20' fill='%234a3525'%3E👑 Двухуровневый%3C/text%3E%3Ctext x='30' y='190' font-family='Segoe UI' font-size='16' fill='%236b5543'%3E32 м², зал%3C/text%3E%3C/svg%3E" alt="Двухуровневый потолок">
-                    <div class="overlay"><i class="fas fa-crown"></i> Двухуровневый</div>
+                    <img src="https://i.imgur.com/p8Xb0IN.jpeg" alt="Натяжной потолок с подсветкой">
+                    <div class="overlay"><i class="fas fa-star"></i> Потолок с подсветкой, 28 м²</div>
                 </div>
+
+                <!-- РАНЕЕ ДОБАВЛЕННЫЕ ФОТО -->
                 <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d9c2ad'/%3E%3Ctext x='30' y='160' font-family='Segoe UI' font-size='20' fill='%234a3525'%3E💧 Влагостойкий%3C/text%3E%3Ctext x='30' y='190' font-family='Segoe UI' font-size='16' fill='%236b5543'%3E24 м², ванная%3C/text%3E%3C/svg%3E" alt="Влагостойкий потолок">
-                    <div class="overlay"><i class="fas fa-water"></i> Влагостойкий, 24 м²</div>
+                    <img src="https://i.imgur.com/6z2HeGi.jpeg" alt="Современный глянцевый потолок">
+                    <div class="overlay"><i class="fas fa-star"></i> Современный глянец, 20 м²</div>
                 </div>
+
                 <div class="portfolio-item">
-                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23d9c2ad'/%3E%3Ctext x='30' y='160' font-family='Segoe UI' font-size='20' fill='%234a3525'%3E🎨 Цветной сатин%3C/text%3E%3Ctext x='30' y='190' font-family='Segoe UI' font-size='16' fill='%236b5543'%3E20 м², коридор%3C/text%3E%3C/svg%3E" alt="Цветной сатин">
-                    <div class="overlay"><i class="fas fa-palette"></i> Цветной сатин</div>
+                    <img src="https://i.imgur.com/03u0671.jpeg" alt="Матовый натяжной потолок">
+                    <div class="overlay"><i class="fas fa-star"></i> Матовый потолок, 16 м²</div>
+                </div>
+
+                <div class="portfolio-item">
+                    <img src="https://i.imgur.com/U6clqtJ.jpeg" alt="Потолок с подсветкой">
+                    <div class="overlay"><i class="fas fa-star"></i> Светодиодная подсветка, 25 м²</div>
+                </div>
+
+                <!-- ФОТО С PINTREST (дизайнерский) -->
+                <div class="portfolio-item">
+                    <img src="https://i.pinimg.com/1200x/17/b6/2e/17b62e5c2035e3ebb6a465873718dd6b.jpg" alt="Дизайнерский натяжной потолок">
+                    <div class="overlay"><i class="fas fa-star"></i> Дизайнерский потолок, 20 м²</div>
                 </div>
             </div>
         </div>
@@ -635,13 +647,17 @@
             <p class="section-sub">Что говорят наши клиенты</p>
             <div class="reviews-grid">
                 <div class="review-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>«Заказали глянцевый потолок в гостиную. Замер бесплатно, монтаж за день — идеально! Спасибо бригаде.»</p><div class="author">— Анна, Красноярск</div></div>
-                <div class="review-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>«Делали фотопечать в детскую. Ребёнок в восторге! Качество отличное, гарантия 15 лет — спокойны.»</p><div class="author">— Дмитрий, Сосновоборск</div></div>
+                <div class="review-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>«Делали фотопечать в детскую. Ребёнок в восторге! Качество отличное, гарантия 10 лет — спокойны.»</p><div class="author">— Дмитрий, Сосновоборск</div></div>
                 <div class="review-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>«Оперативно сделали замер, привезли образцы. Монтаж занял меньше дня. Очень аккуратно, без пыли.»</p><div class="author">— Елена, Железногорск</div></div>
+                <div class="review-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>«Большое спасибо за качественный ремонт! Потолок выглядит дорого и стильно. Всё сделано быстро и профессионально.»</p><div class="author">— Сергей, Красноярск</div></div>
+                <div class="review-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>«Очень довольна результатом! Выбрала сатиновый потолок — выглядит шикарно, комната стала светлее и просторнее. Рекомендую!»</p><div class="author">— Ольга, Дивногорск</div></div>
+                <div class="review-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>«Заказывали монтаж натяжного потолка в новой квартире. Ребята приехали вовремя, всё сделали за 4 часа. Без пыли и грязи. Огромное спасибо!»</p><div class="author">— Иван, Красноярск</div></div>
+                <div class="review-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>«Отличная компания! Сделали потолок на кухне и в коридоре. Цена приятно удивила, качество на высоте. Обязательно обратимся ещё.»</p><div class="author">— Мария, Красноярск</div></div>
+                <div class="review-card"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>«Рекомендую всем! Делали потолок в зал с подсветкой по периметру. Выглядит очень эффектно. Монтаж занял всего 5 часов.»</p><div class="author">— Алексей, Сосновоборск</div></div>
             </div>
         </div>
     </section>
 
-    <!-- Калькулятор -->
     <section class="section" id="calculator">
         <div class="container">
             <h2 class="section-title">Калькулятор стоимости</h2>
@@ -686,7 +702,7 @@
             <div class="contacts-wrap">
                 <div class="contacts-info">
                     <div><i class="fas fa-map-marker-alt"></i> <strong>Адрес:</strong> г. Красноярск, ул. Взлётная, 28</div>
-                    <div><i class="fas fa-phone-alt"></i> <strong>Телефон:</strong> <a href="tel:+799954304159">8-995-430-41-59</a></div>
+                    <div><i class="fas fa-phone-alt"></i> <strong>Телефон:</strong> <a href="tel:+799954304159" onclick="phoneClick(event)">8-995-430-41-59</a></div>
                     <div><i class="fas fa-envelope"></i> <strong>Email:</strong> info@garantmaster.ru</div>
                     <div><i class="fas fa-clock"></i> <strong>Режим работы:</strong> Пн–Вс 09:00 – 21:00</div>
                     <div style="margin-top: 16px; background: #d9b382; padding: 10px 20px; border-radius: 60px; display: inline-block; font-weight: 600; color: #3e2e24;"><i class="fas fa-ruler"></i> Бесплатный замер</div>
@@ -708,13 +724,6 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p>© 2026 <span>Гарант Мастер</span> — Натяжные потолки в Красноярске от 690 ₽/м²</p>
-            <p style="margin-top: 6px; font-size: 0.85rem; opacity: 0.7;"><i class="fas fa-shield-alt"></i> Гарантия 15 лет на материалы и монтаж</p>
-        </div>
-    </footer>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const areaInput = document.getElementById('calcArea');
@@ -728,21 +737,18 @@
                 const area = parseFloat(areaInput.value) || 0;
                 const pricePerM2 = parseFloat(typeSelect.value) || 0;
                 const lights = parseInt(lightsInput.value) || 0;
-                const lightPrice = 300; // цена за один светильник
+                const lightPrice = 300;
                 const total = area * pricePerM2 + lights * lightPrice;
                 totalSpan.textContent = total.toLocaleString('ru-RU');
             }
 
-            // Расчет при изменении полей
             [areaInput, typeSelect, lightsInput].forEach(el => {
                 el.addEventListener('input', calculate);
                 el.addEventListener('change', calculate);
             });
 
-            // Кнопка "Рассчитать"
             calcBtn.addEventListener('click', calculate);
 
-            // Кнопка "Рассчитать стоимость" в герое — скролл к калькулятору
             scrollBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 const calcSection = document.getElementById('calculator');
@@ -751,9 +757,22 @@
                 }
             });
 
-            // Первоначальный расчет
             calculate();
         });
+
+        // Функция для клика по номеру телефона
+        function phoneClick(event) {
+            alert('📞 Звонок по номеру 8-995-430-41-59');
+            return true;
+        }
+
+        // Функция для скролла к портфолио
+        function scrollToPortfolio() {
+            const portfolioSection = document.getElementById('portfolio');
+            if (portfolioSection) {
+                portfolioSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
     </script>
 </body>
 </html>
